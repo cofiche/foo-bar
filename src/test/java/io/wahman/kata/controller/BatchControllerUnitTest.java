@@ -41,7 +41,7 @@ class BatchControllerUnitTest {
     private BatchController batchController;
 
     private JobExecution jobExecution;
-    private JobParametersBuilder jobParametersBuilder;
+
 
 
 

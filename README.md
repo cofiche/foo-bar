@@ -62,7 +62,7 @@ docker-compose up -d
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/foobarkquix-batch.git
+git https://github.com/cofiche/foo-bar.git
 cd foobarkquix-batch
 ```
 

@@ -1,8 +1,9 @@
 package io.wahman.kata.reader;
 
 import org.springframework.batch.item.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import io.wahman.kata.Constants.Constants;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,11 +25,12 @@ public class Reader implements ItemReader<Integer>, ItemStream {
     // Key used to store state in the execution context
     private static final String CURRENT_LINE_COUNT = "current.line.count";
 
-    private static final String FILE_PATH = Constants.INPUT_PATH;
+    @Value("${app.file.input-path}")
+    private String filePath;
 
 
     private void initialize() throws IOException {
-        bufferedReader = new BufferedReader(new FileReader(FILE_PATH));
+        bufferedReader = new BufferedReader(new FileReader(filePath));
         initialized = true;
     }
 

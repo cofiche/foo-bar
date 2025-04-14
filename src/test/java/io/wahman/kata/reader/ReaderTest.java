@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.batch.item.ExecutionContext;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +28,7 @@ class ReaderTest {
         List<String> lines = Files.readAllLines(testFile.toPath());
         fileLineCount = lines.size();
         reader = new Reader();
+        ReflectionTestUtils.setField(reader, "filePath", testFile.getAbsolutePath());
         executionContext = new ExecutionContext();
     }
 

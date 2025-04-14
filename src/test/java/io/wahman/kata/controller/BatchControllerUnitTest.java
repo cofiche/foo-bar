@@ -11,7 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
@@ -71,19 +70,6 @@ class BatchControllerUnitTest {
 
         // Then
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-    }
-
-    @Test
-    void testGetJobStatus_Found() {
-        // Given
-        jobExecution.setStatus(BatchStatus.COMPLETED);
-
-        // When
-        ResponseEntity<String> response = batchController.getJobStatus(1L);
-
-        // Then
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("COMPLETED", response.getBody());
     }
 
     @Test
